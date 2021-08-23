@@ -1,0 +1,10 @@
+name = "utility"
+type = 'webpack'
+account_id = 'f94e9216046f8820e35a521d046c6268'
+route = ''
+zone_id = ''
+usage_model = ''
+workers_dev = true
+target_type = "webpack"
+
+site = {bucket = "./public",entry-point = "workers-site"}

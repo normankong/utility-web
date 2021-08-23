@@ -1,0 +1,12 @@
+{
+  "private": false,
+  "name": "utilith-web",
+  "version": "1.0.0",
+  "description": "A utility web site servicing static information",
+  "main": "index.js",
+  "author": "Norman Kong <normankong@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "~0.1.2"
+  }
+}
