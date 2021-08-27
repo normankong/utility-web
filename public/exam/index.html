@@ -46,6 +46,7 @@
         let curIndex = 0;
         let answer = "Z";
         let toDisplay = true;
+        let qUrl = "aws_saa.json";
        
         function showQuestion(index) {
             toDisplay = true;
@@ -84,6 +85,10 @@
             let param = new URLSearchParams(window.location.search);
             let tmpQ = param.get("q");
             if (tmpQ != null) curIndex = parseInt(tmpQ, 10) - 1;
+            let tmpCde = param.get("code");
+            if (tmpCde != null) qUrl = `${tmpCde}.json`;
+
+
             download();
         });
 
@@ -134,7 +139,7 @@
         }
 
         function download() {
-            $.getJSON("questions.json", function (json) {
+            $.getJSON(qUrl, function (json) {
                 data = json;
                 showQuestion(curIndex)
             });
