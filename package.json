@@ -1,0 +1,24 @@
+{
+  "name": "utility-web",
+  "version": "1.0.0",
+  "description": "[![Publish](https://github.com/normankong/utility-web/actions/workflows/main.yml/badge.svg)](https://github.com/normankong/utility-web/actions/workflows/main.yml)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preview": "wrangler preview --watch",
+    "publish": "wrangler publish",
+    "tail": "wrangler tail",
+    "dev": "wrangler dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/normankong/utility-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/normankong/utility-web/issues"
+  },
+  "homepage": "https://github.com/normankong/utility-web#readme"
+}

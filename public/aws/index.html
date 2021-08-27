@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <script src="jquery-3.5.0.js"></script>
+
+    <script id="message-template" type="text/template">
+        <div>
+            Question <span class="text-danger">{{index}}</span>/{{max}}<br/><br/>
+
+            <input id="btn-prev"   type="button" class="btn btn-success" style="font-size:13px;" value="&lt;&lt;Prev Question"/>
+            <input id="btn-toggle" type="button" class="btn btn-success" style="font-size:13px;" value="Show Answer" />
+            <input id="btn-next"   type="button" class="btn btn-success" style="font-size:13px;" value="Next Question &gt;&gt;"/>
+
+            <br/><br/>
+            <div class="qa-question">
+                <font color="white">{{message-body}}{{img}}</font>
+            </div>
+        </div>
+        <div class="qa-options" style="color:white;">
+            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_A" value="A">{{option-a}}</label></p>
+            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_B" value="B">{{option-b}}</label></p>
+            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_C" value="C">{{option-c}}</label></p>
+            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_D" value="D">{{option-d}}</label></p>
+        </div>
+
+        <div class="qa-answerexp" style="z-index:99999;display:none">
+            <div style="margin:10px 0px;font-weight:bold;">Correct Answer: 
+                <span style="font-size:18px;color:red;">{{answer}}</span></div>
+            <div class="qa_explanation">
+                <span style="font-size:16px;color:green;">{{explanations}}</span>
+            </div>
+        </div>
+    
+    </script>
+
+    <script type="text/javascript">
+
+        let data = [];
+        let curIndex = 0;
+        let answer = "Z";
+        let toDisplay = true;
+       
+        function showQuestion(index) {
+            toDisplay = true;
+            let jsonObj = data[index];
+            answer = jsonObj.correctAnswer;
+
+            let regEx = /\((?:https?|ftp):\/\/[\n\S]+/g
+            let urls = jsonObj.question.match(regEx);
+            let imageText = "";
+            if (urls != null && urls.length == 1){
+                let url = urls[0].substring(1, urls[0].length -1)
+                imageText = `<img src='${url}'/>`;
+            }
+
+            let question = jsonObj.question.replace(regEx, '').substring(4)
+            let $clone = $('#message-template').html();
+            $clone = $clone.replace("{{index}}", (index + 1))
+            $clone = $clone.replace("{{max}}", data.length);
+            $clone = $clone.replace("{{message-body}}", question);
+            $clone = $clone.replace("{{option-a}}", jsonObj.answers.A);
+            $clone = $clone.replace("{{option-b}}", jsonObj.answers.B);
+            $clone = $clone.replace("{{option-c}}", jsonObj.answers.C);
+            $clone = $clone.replace("{{option-d}}", jsonObj.answers.D);
+            $clone = $clone.replace("{{answer}}", jsonObj.correctAnswer);
+            $clone = $clone.replace("{{explanations}}", jsonObj.explain);
+            $clone = $clone.replace("{{img}}", imageText)
+
+            $("#target-container").html($clone);
+
+            console.log($clone)
+
+            initButton();
+        }
+
+        $(function () {
+            let param = new URLSearchParams(window.location.search);
+            let tmpQ = param.get("q");
+            if (tmpQ != null) curIndex = parseInt(tmpQ, 10) - 1;
+            download();
+        });
+
+        function initButton() {
+            $("#btn-prev").on('click', prev);
+            $("#btn-next").on('click', next);
+            $("#btn-toggle").on('click', toggle);
+        }
+
+        function toggle() { 
+
+            var obj = this;
+            if (toDisplay){
+                $(".qa-answerexp").show();
+                var _qaAnswer = answer;
+                $(".qa-options label").each(function (i) {
+                    var _optionVal = $(this).find("input").val();
+                    if ($(this).find("input").is(':checked') && _qaAnswer.indexOf(_optionVal) == -1) {
+                        $(this).addClass("bg-danger");
+                    }
+                    else if (_qaAnswer.indexOf(_optionVal) != -1) {
+                        $(this).addClass("bg-success");
+                    }
+                });
+            }
+            else {
+                $(".qa-answerexp").hide();
+                $(".qa-options label").removeClass("bg-danger").removeClass("bg-success");
+            }
+            toDisplay = !toDisplay;
+            $(this).val(toDisplay ? "Show Answer" : "Hide Answer");
+        }
+
+        function prev() {
+            if (curIndex == 0) {
+                alert("You have reach the first")
+                return;
+            }
+            showQuestion(--curIndex);
+        }
+
+        function next() {
+            if (curIndex == data.length - 1) {
+                alert("You have reach the end")
+                return;
+            }
+            showQuestion(++curIndex);
+        }
+
+        function download() {
+            $.getJSON("questions.json", function (json) {
+                data = json;
+                showQuestion(curIndex)
+            });
+        }
+
+</script>
+</head>
+
+<body>
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto;" width="390px">
+        <tr>
+            <td>
+                <div class="qa">
+                    <h4>
+                        <div id="target-container"></div>
+                    </h4>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
