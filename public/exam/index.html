@@ -87,9 +87,12 @@
             if (tmpQ != null) curIndex = parseInt(tmpQ, 10) - 1;
             let tmpCde = param.get("code");
             if (tmpCde != null) qUrl = `${tmpCde}.json`;
+            let tmpShow = param.get("show");
+            let displayOnLoad = (tmpShow == 'true');
 
+            download(() => {if (displayOnLoad) toggle();});
 
-            download();
+            
         });
 
         function initButton() {
@@ -99,7 +102,6 @@
         }
 
         function toggle() { 
-
             var obj = this;
             if (toDisplay){
                 $(".qa-answerexp").show();
@@ -138,10 +140,11 @@
             showQuestion(++curIndex);
         }
 
-        function download() {
+        function download(callback) {
             $.getJSON(qUrl, function (json) {
                 data = json;
                 showQuestion(curIndex)
+                callback();
             });
         }
 
