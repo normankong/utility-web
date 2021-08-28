@@ -46,6 +46,7 @@
         let curIndex = 0;
         let answer = "Z";
         let toDisplay = true;
+        let forceDisplay = false;
         let qUrl = "aws_saa.json";
        
         function showQuestion(index) {
@@ -79,6 +80,8 @@
             console.log($clone)
 
             initButton();
+
+            if (forceDisplay) toggle();
         }
 
         $(function () {
@@ -88,9 +91,9 @@
             let tmpCde = param.get("code");
             if (tmpCde != null) qUrl = `${tmpCde}.json`;
             let tmpShow = param.get("show");
-            let displayOnLoad = (tmpShow == 'true');
+            forceDisplay = (tmpShow == 'true');
 
-            download(() => {if (displayOnLoad) toggle();});
+            download();
 
             
         });
@@ -140,11 +143,10 @@
             showQuestion(++curIndex);
         }
 
-        function download(callback) {
+        function download() {
             $.getJSON(qUrl, function (json) {
                 data = json;
                 showQuestion(curIndex)
-                callback();
             });
         }
 
