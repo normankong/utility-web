@@ -28,7 +28,8 @@
             <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_B" value="B">{{option-b}}</label></p>
             <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_C" value="C">{{option-c}}</label></p>
             <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_D" value="D">{{option-d}}</label></p>
-        </div>
+            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_E" value="E">{{option-e}}</label></p>
+     </div>
 
         <div class="qa-answerexp" style="z-index:99999;display:none">
             <div style="margin:10px 0px;font-weight:bold;">Correct Answer: 
@@ -71,6 +72,7 @@
             $clone = $clone.replace("{{option-b}}", jsonObj.answers.B);
             $clone = $clone.replace("{{option-c}}", jsonObj.answers.C);
             $clone = $clone.replace("{{option-d}}", jsonObj.answers.D);
+            $clone = $clone.replace("{{option-e}}", jsonObj.answers.E);
             $clone = $clone.replace("{{answer}}", jsonObj.correctAnswer);
             $clone = $clone.replace("{{explanations}}", jsonObj.explain);
             $clone = $clone.replace("{{img}}", imageText)
