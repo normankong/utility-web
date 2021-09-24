@@ -10,6 +10,10 @@
     <link href="style.css" rel="stylesheet" />
     <script src="jquery-3.5.0.js"></script>
 
+    <script id="option-tag" type="text/template">
+        <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_{{option-id}}" value="A">{{option-text}}</label></p>
+    </script>
+
     <script id="message-template" type="text/template">
         <div>
             Question <span class="text-danger">{{index}}</span>/{{max}}<br/><br/>
@@ -24,10 +28,7 @@
             </div>
         </div>
         <div class="qa-options" style="color:white;">
-            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_A" value="A">{{option-a}}</label></p>
-            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_B" value="B">{{option-b}}</label></p>
-            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_C" value="C">{{option-c}}</label></p>
-            <p><label class="radio"><input type="checkbox" name="ipt_options" class="option_D" value="D">{{option-d}}</label></p>
+            {{option-tag}}
         </div>
 
         <div class="qa-answerexp" style="z-index:99999;display:none">
@@ -62,7 +63,16 @@
                 imageText = `<img src='${url}'/>`;
             }
 
-            let question = jsonObj.question.replace(regEx, '').substring(4)
+            let question = jsonObj.question.replace(regEx, '').substring(4);
+            let $option = $('#option-tag').html();
+
+            let optionTag = "";
+            ["A","B","C","D","E"].map(x => {
+                if (jsonObj.answers[x] != null) {
+                    optionTag += $option.replace("{{option-text}}", jsonObj.answers[x])
+                }
+            }).join("\n");
+
             let $clone = $('#message-template').html();
             $clone = $clone.replace("{{index}}", (index + 1))
             $clone = $clone.replace("{{max}}", data.length);
@@ -74,10 +84,11 @@
             $clone = $clone.replace("{{answer}}", jsonObj.correctAnswer);
             $clone = $clone.replace("{{explanations}}", jsonObj.explain);
             $clone = $clone.replace("{{img}}", imageText)
+            $clone = $clone.replace("{{option-tag}}", optionTag);
 
             $("#target-container").html($clone);
 
-            console.log($clone)
+            // console.log($clone)
 
             initButton();
 

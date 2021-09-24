@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "accountNumber": "502-123456-001",
+        "narrative": "Cash Withdrawal",
+        "accountCurrency": "CAD",
+        "accountBalance": 200,
+        "accountSign": "-",
+        "txnType": "suitcase"
+    },
+    {
+        "id": 2,
+        "accountNumber": "502-123456-001",
+        "narrative": "Cash Deposit",
+        "accountCurrency": "CAD",
+        "accountBalance": 1200,
+        "accountSign": "+",
+        "txnType": "dollar"
+    },
+    {
+        "id": 3,
+        "accountNumber": "502-123456-001",
+        "narrative": "Deposit Interest",
+        "accountCurrency": "CAD",
+        "accountBalance": 200,
+        "accountSign": "+",
+        "txnType": "mobile-phone"
+    },
+    {
+        "id": 4,
+        "accountNumber": "502-123456-001",
+        "narrative": "Deposit Withdrawal",
+        "accountCurrency": "CAD",
+        "accountBalance": 200,
+        "accountSign": "+",
+        "txnType": "mobile-phone"
+    }
+]

@@ -1,0 +1,65 @@
+[
+    {
+        "id" : 1,
+        "accountNumber" : "502-123456-001",
+        "accountDescription" : "NEU Savings Account",
+        "accountCurrency" : "CAD",
+        "accountBalance" : 200.02
+    },
+    {
+        "id" : 2,
+        "accountNumber" : "408-123456-001",
+        "accountDescription" : "NEU Current Account",
+        "accountCurrency" : "CAD",
+        "accountBalance" : 100.02
+    },
+    {
+        "id" : 3,
+        "accountNumber" : "408-123456-833",
+        "accountDescription" : "NEU Current Account",
+        "accountCurrency" : "HKD",
+        "accountBalance" : 100.02
+    },
+    {
+        "id" : 4,
+        "accountNumber" : "502-123456-001",
+        "accountDescription" : "NEU Savings Account",
+        "accountCurrency" : "CAD",
+        "accountBalance" : 200.02
+    },
+    {
+        "id" : 5,
+        "accountNumber" : "408-123456-001",
+        "accountDescription" : "NEU Current Account",
+        "accountCurrency" : "CAD",
+        "accountBalance" : 100.02
+    },
+    {
+        "id" : 6,
+        "accountNumber" : "408-123456-833",
+        "accountDescription" : "NEU Current Account",
+        "accountCurrency" : "HKD",
+        "accountBalance" : 100.02
+    },
+    {
+        "id" : 7,
+        "accountNumber" : "502-123456-001",
+        "accountDescription" : "NEU Savings Account",
+        "accountCurrency" : "CAD",
+        "accountBalance" : 200.02
+    },
+    {
+        "id" : 8,
+        "accountNumber" : "408-123456-001",
+        "accountDescription" : "NEU Current Account",
+        "accountCurrency" : "CAD",
+        "accountBalance" : 100.02
+    },
+    {
+        "id" : 9,
+        "accountNumber" : "408-123456-833",
+        "accountDescription" : "NEU Current Account",
+        "accountCurrency" : "HKD",
+        "accountBalance" : 100.02
+    }
+]

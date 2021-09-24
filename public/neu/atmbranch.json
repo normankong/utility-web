@@ -1,0 +1,8 @@
+[
+    { "latlng": { "latitude": 37.78825, "longitude": -122.4324 }, "title": "NEU Branch 1", "desc": "NEU City 1 Branch", "url": "https://lh5.googleusercontent.com/p/AF1QipPnf5OQsUbDjDWXzVU7f2nqNm3xY-Gr2g5wRmw0=w426-h240-k-no" },
+    { "latlng": { "latitude": 37.78125, "longitude": -122.4124 }, "title": "NEU Branch 2", "desc": "NEU City 2 Branch", "url": "https://lh5.googleusercontent.com/p/AF1QipPnf5OQsUbDjDWXzVU7f2nqNm3xY-Gr2g5wRmw0=w426-h240-k-no" },
+    { "latlng": { "latitude": 37.76135, "longitude": -122.4294 }, "title": "NEU Branch 3", "desc": "NEU City 3 Branch", "url": "https://lh5.googleusercontent.com/p/AF1QipPnf5OQsUbDjDWXzVU7f2nqNm3xY-Gr2g5wRmw0=w426-h240-k-no" },
+    { "latlng": { "latitude": 22.3876642, "longitude": 113.9786928 }, "title": "ATM HK 1", "desc": "NEU City 3 Branch", "url": "https://lh5.googleusercontent.com/p/AF1QipNPRVOXBV1Iw4eJziBePa-8GpdV-XJ7VqmG4rG6=w426-h240-k-no" },
+    { "latlng": { "latitude": 22.3851342, "longitude": 113.9740928 }, "title": "ATM HK 2", "desc": "NEU City 4 Branch", "url": "https://lh5.googleusercontent.com/p/AF1QipM6ixelFOoQ5JD2PUAdJpLIKQEn031W08CQcjyX=w426-h240-k-no" },
+    { "latlng": { "latitude": 22.3844312, "longitude": 113.9759728 }, "title": "ATM HK 3", "desc": "NEU City 5 Branch", "url": "https://lh5.googleusercontent.com/p/AF1QipMpXHCcaUGc3lRyBeIRJaYUZ3apgKoaSAmZgfYI=w426-h240-k-no" }
+]
